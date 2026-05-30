@@ -10,7 +10,12 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Bulk WhatsApp Sender"
+    "default_title": "Bulk WhatsApp Sender",
+    "default_icon": {
+      "16": "icons/icon128.png",
+      "48": "icons/icon128.png",
+      "128": "icons/icon128.png"
+    }
   },
   "background": {
     "service_worker": "background.js"
