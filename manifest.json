@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "RC Bulk WhatsApp Sender",
+  "version": "1.0.0",
+  "description": "Send bulk WhatsApp messages safely from a CSV file.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Bulk WhatsApp Sender"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://web.whatsapp.com/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://web.whatsapp.com/*"
+  ]
+}

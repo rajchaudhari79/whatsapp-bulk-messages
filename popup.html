@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bulk WhatsApp Sender</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Bulk WhatsApp Sender</h2>
+    
+    <div class="section">
+      <label>1. Upload Data (CSV from Google Sheets)</label>
+      <input type="file" id="csvFileInput" accept=".csv">
+      <div id="dataStatus" class="status">No data loaded.</div>
+    </div>
+
+    <div class="section">
+      <label>2. Message Template</label>
+      <p class="hint">Use {{ColumnName}} for variables (e.g., Hello {{Name}})</p>
+      <textarea id="messageTemplate" rows="4" placeholder="Hi {{Name}}, ..."></textarea>
+    </div>
+
+    <div class="section">
+      <label>3. Column Mapping</label>
+      <select id="phoneColumnSelect">
+        <option value="">Select Phone Number Column...</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <label>4. Anti-Ban Settings</label>
+      <div class="flex-row">
+        <div class="flex-col">
+          <label>Min Delay (sec)</label>
+          <input type="number" id="minDelay" value="10">
+        </div>
+        <div class="flex-col">
+          <label>Max Delay (sec)</label>
+          <input type="number" id="maxDelay" value="25">
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-col">
+          <label>Batch Size</label>
+          <input type="number" id="batchSize" value="30">
+        </div>
+        <div class="flex-col">
+          <label>Batch Pause (min)</label>
+          <input type="number" id="batchPause" value="15">
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="startBtn" class="btn-primary">Start</button>
+      <button id="stopBtn" class="btn-danger" disabled>Stop</button>
+      <button id="resetBtn" style="background-color: #6c757d; color: white;">Reset</button>
+    </div>
+
+    <div class="log-section">
+      <h3>Progress: <span id="progressText">0 / 0</span></h3>
+      <div id="logs" class="logs"></div>
+    </div>
+  </div>
+  <script src="papaparse.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
